@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
         libpng-dev
 RUN apt-get install nano
 
-RUN docker-php-ext-install gd
+RUN docker-php-ext-install gd pdo pdo_mysql
 
 WORKDIR /var/www/html
 
