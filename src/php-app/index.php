@@ -15,7 +15,7 @@ $black = imagecolorallocate($image, 0, 0, 0);
 imagefill($image, 0, 0, $white);
 
 // Vypísanie čísel od 1 do 10
-for ($i = 1; $i <= 10; $i++) {
+for ($i = 1; $i <= 11; $i++) {
     // Použitie preddefinovaného písma (1 až 5) a vypísanie čísla
     // Pozícia Y je upravená, aby čísla boli vertikálne rozložené
     imagestring($image, 5, 10, $i * 15, $i, $black);

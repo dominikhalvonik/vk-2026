@@ -10,6 +10,28 @@ services:
     volumes:
       - apache_data:/var/www/html
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    depends_on:
+      - php-fpm
+    networks:
+      - backend
+    volumes:
+      - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./src/php-app:/var/www/html
+
+  php-fpm:
+    image: ukf/vk-2026-be:latest
+    build:
+      context: .
+      dockerfile: config/php-fpm/Dockerfile
+    networks:
+      - backend
+    volumes:
+      - ./src/php-app:/var/www/html
+
   mysql:
     image: mysql:latest
     restart: always
