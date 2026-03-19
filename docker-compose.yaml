@@ -1,0 +1,19 @@
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: config/apache/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+    volumes:
+      - apache_data:/var/www/html
+
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  apache_data:
