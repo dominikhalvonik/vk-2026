@@ -32,6 +32,33 @@ services:
     volumes:
       - ./src/php-app:/var/www/html
 
+  vue-app:
+    image: ukf/vk-2026-be:dev
+    build:
+      context: ./src/vue-app
+      dockerfile: ../../config/nodejs/Dockerfile
+      target: development
+      args:
+        - NODE_ENV=development
+    volumes:
+      - /app/node_modules
+      - ./src/vue-app:/app
+    command: [ "npm", "run", "dev", "--", "--host" ]
+    ports:
+      - "8082:8080"
+      - "9000:9000"
+    networks:
+      - backend
+
+  rust-app:
+    build:
+      context: .
+      dockerfile: config/rust/Dockerfile
+    ports:
+      - "8083:8080"
+    networks:
+      - backend
+
   mysql:
     image: mysql:latest
     restart: always
