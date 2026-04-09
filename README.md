@@ -190,3 +190,69 @@ docker load < vk-apache.tar
 ## Záver Docker CLI
 
 Tento zoznam zahŕňa základné aj pokročilejšie príkazy, ktoré potrebujeme pri práci s Dockerom — od vytvárania image a kontajnerov, až po správu volume, sietí a logov.
+
+## Docker Compose - Kompletný zoznam príkazov s vysvetlením
+
+---
+
+### 1. Spustenie Docker Compose projektu
+
+Spustenie všetkých kontajnerov definovaných v súbore `docker-compose.yml`. Príkaz automaticky vytvorí potrebné siete, volumes a spustí kontajnery v popredí.
+
+```bash
+docker compose up
+```
+
+Pre spustenie kontajnerov na pozadí (detached mód) použijeme parameter `-d`.
+
+```bash
+docker compose up -d
+```
+
+---
+
+### 2. Zastavenie Docker Compose projektu
+
+Zastaví všetky bežiace kontajnery definované v aktuálnom Docker Compose projekte, pričom ponechá zachované siete, volumes a vytvorené kontajnery.
+
+```bash
+docker compose stop
+```
+
+---
+
+### 3. Ukončenie Docker Compose projektu
+
+Zastaví a odstráni kontajnery, siete a ďalšie zdroje vytvorené príkazom `docker compose up`. Štandardne ponechá volumes zachované.
+
+```bash
+docker compose down
+```
+
+Pre odstránenie volumes použijeme parameter `-v`.
+
+```bash
+docker compose down -v
+```
+
+---
+
+### 4. Build Docker Compose image
+
+Vytvorí alebo obnoví images definované v `docker-compose.yml`, ale nespustí kontajnery.
+
+```bash
+docker compose build
+```
+
+Pre build bez použitia cache (kompletný rebuild) použijeme parameter `--no-cache`.
+
+```bash
+docker compose build --no-cache
+```
+
+---
+
+## Záver Docker Compose
+
+Tento rozšírený zoznam pokrýva dôležité príkazy Docker Compose, ktoré zjednodušujú prácu s viacerými kontajnermi naraz pomocou jedného konfiguračného súboru.
