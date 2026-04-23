@@ -22,6 +22,9 @@ spec:
             name: nginx-config
         - name: app-code
           emptyDir: {}
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: ukf-pv-claim
 
       initContainers:
         - name: init-copy-code
@@ -42,6 +45,8 @@ spec:
               subPath: php.ini
             - name: app-code
               mountPath: /var/www/html
+            - name: persistent-storage
+              mountPath: /var/www/html/uploads
 
         - name: nginx
           image: nginx:latest
