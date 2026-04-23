@@ -256,3 +256,95 @@ docker compose build --no-cache
 ## Záver Docker Compose
 
 Tento rozšírený zoznam pokrýva dôležité príkazy Docker Compose, ktoré zjednodušujú prácu s viacerými kontajnermi naraz pomocou jedného konfiguračného súboru.
+
+## Kubernetes CLI - Kompletný zoznam príkazov s vysvetlením
+
+### 1. Zoznam namespaces v clustri
+Zobrazenie všetkých namespaces dostupných v Kubernetes clustri.
+
+```bash
+kubectl get namespaces
+```
+
+---
+
+### 2. Vytvorenie nového namespace
+Vytvorenie vlastného namespace s názvom `ukf`.
+
+```bash
+kubectl create namespace ukf
+```
+
+---
+
+### 3. Aplikovanie konfigurácie zo súboru
+Univerzálny príkaz na nahratie a spustenie všetkého, čo je definované v YAML súbore (Deployment, Service, ConfigMap, atď.).
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+---
+
+### 4. Zoznam Deploymentov v namespace `ukf`
+Zobrazenie všetkých deploymentov v určenom namespace.
+
+```bash
+kubectl -n ukf get deployments
+```
+
+---
+
+### 5. Zoznam Services v namespace `ukf`
+Zobrazenie všetkých Kubernetes Services (napr. ClusterIP, NodePort) v namespace.
+
+```bash
+kubectl -n ukf get svc
+```
+
+---
+
+### 6. Zoznam ConfigMap v namespace `ukf`
+Zobrazenie všetkých ConfigMap objektov v namespace `ukf`.
+
+```bash
+kubectl -n ukf get configmap
+```
+
+---
+
+### 7. Zoznam Podov v namespace `ukf`
+Zobrazenie všetkých bežiacich podov v namespace.
+
+```bash
+kubectl -n ukf get pods
+```
+
+---
+
+### 8. Vymazanie všetkých Podov v namespace `ukf`
+Rýchle reštartovanie aplikácií vymazaním všetkých podov v danom namespace (budú automaticky znovu vytvorené Deploymentom).
+
+```bash
+kubectl -n ukf delete pods --all
+```
+
+---
+
+### 9. Live editácia ConfigMap
+Editovanie existujúcej `ConfigMap` s názvom `nginx-config` pomocou interaktívneho editora.
+
+```bash
+kubectl edit configmap nginx-config -o yaml -n ukf
+```
+
+---
+
+### 10. Pripojenie sa do bežiaceho podu
+Pripojenie do podu s menom `nginx-d64b868c9-mvt6h` v namespace `ukf`, do kontajnera `nginx` cez bash terminál.
+
+```bash
+kubectl exec -it nginx-d64b868c9-mvt6h -n ukf -c nginx -- bash
+```
+
+---
