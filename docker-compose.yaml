@@ -23,7 +23,7 @@ services:
       - ./src/php-app:/var/www/html
 
   php-fpm:
-    image: ukf/vk-2026-be:latest
+    image: ppsdocker/vk-2026-be:latest
     build:
       context: .
       dockerfile: config/php-fpm/Dockerfile
@@ -33,7 +33,7 @@ services:
       - ./src/php-app:/var/www/html
 
   vue-app:
-    image: ukf/vk-2026-be:dev
+    image: ppsdocker/vk-2026-fe:dev
     build:
       context: ./src/vue-app
       dockerfile: ../../config/nodejs/Dockerfile
